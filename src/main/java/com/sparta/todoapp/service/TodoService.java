@@ -43,4 +43,9 @@ public class TodoService {
         todo.update(request);
         return new TodoResponseDto(todo);
     }
+
+    @Transactional
+    public void deleteTodo(Long todoId) {
+        todoRepository.deleteById(todoId);
+    }
 }
