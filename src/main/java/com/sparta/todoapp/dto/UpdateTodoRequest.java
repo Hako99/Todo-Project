@@ -6,5 +6,4 @@ import lombok.Getter;
 public class UpdateTodoRequest {
     private String title;
     private String contents;
-
 }
