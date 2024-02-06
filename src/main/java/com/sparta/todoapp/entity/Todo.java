@@ -1,7 +1,7 @@
 package com.sparta.todoapp.entity;
 
 import com.sparta.todoapp.dto.TodoRequestDto;
-import com.sparta.todoapp.dto.UpdateTodoRequest;
+import com.sparta.todoapp.dto.UpdateTodoRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +37,7 @@ public class Todo {
         this.date = requestDto.getDate();
     }
 
-    public void update(UpdateTodoRequest request) {
+    public void update(UpdateTodoRequestDto request) {
         this.title = request.getTitle();
         this.contents = request.getContents();
     }
