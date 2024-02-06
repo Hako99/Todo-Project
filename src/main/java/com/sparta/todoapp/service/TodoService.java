@@ -2,8 +2,10 @@ package com.sparta.todoapp.service;
 
 import com.sparta.todoapp.dto.TodoRequestDto;
 import com.sparta.todoapp.dto.TodoResponseDto;
+import com.sparta.todoapp.dto.UpdateTodoRequest;
 import com.sparta.todoapp.entity.Todo;
 import com.sparta.todoapp.repository.TodoRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,13 @@ public class TodoService {
 
     public TodoResponseDto getTodoOne(Long todoId) {
         Todo todo = todoRepository.findById(todoId).orElseThrow(()->new IllegalArgumentException("해당 일정표 없음"));
+        return new TodoResponseDto(todo);
+    }
+
+    @Transactional
+    public TodoResponseDto updateTodo(Long todoId, UpdateTodoRequest request) {
+        Todo todo = todoRepository.findById(todoId).orElseThrow(()->new IllegalArgumentException("해당 일정표 없음"));
+        todo.update(request);
         return new TodoResponseDto(todo);
     }
 }

@@ -2,6 +2,7 @@ package com.sparta.todoapp.controller;
 
 import com.sparta.todoapp.dto.TodoRequestDto;
 import com.sparta.todoapp.dto.TodoResponseDto;
+import com.sparta.todoapp.dto.UpdateTodoRequest;
 import com.sparta.todoapp.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,11 @@ public class TodoController {
     @GetMapping("/todo/{todoId}")
     public TodoResponseDto getTodoOne(@PathVariable Long todoId){
         return todoService.getTodoOne(todoId);
+    }
+
+    @PutMapping("/todo/{todoId}")
+    public TodoResponseDto updateTodo(@PathVariable Long todoId,@RequestBody UpdateTodoRequest request){
+        return todoService.updateTodo(todoId,request);
     }
 
 }
