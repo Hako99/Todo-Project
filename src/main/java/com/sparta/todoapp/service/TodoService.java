@@ -29,4 +29,9 @@ public class TodoService {
         }
         return responseDtoList;
     }
+
+    public TodoResponseDto getTodoOne(Long todoId) {
+        Todo todo = todoRepository.findById(todoId).orElseThrow(()->new IllegalArgumentException("해당 일정표 없음"));
+        return new TodoResponseDto(todo);
+    }
 }
